@@ -1,0 +1,100 @@
+{
+  "kicker": "FAQ",
+  "headline": "Questions, answered plainly",
+  "intro": "Don't see your question? Ask City, the virtual helper in the corner, or call/text 872-777-7991.",
+  "groups": [
+    {
+      "title": "Getting started",
+      "items": [
+        {
+          "q": "Is the consultation really free?",
+          "a": "Yes. Consultations are free, take about 30 minutes, and come with no obligation to buy anything."
+        },
+        {
+          "q": "Do you work with more than one insurance company?",
+          "a": "Yes. I work with multiple insurance companies, so you can compare real options. Which plans are available depends on your state and situation."
+        },
+        {
+          "q": "What areas do you serve?",
+          "a": "I serve Chicagoland in person or virtually, and clients in the other states where I'm licensed. Ask and I'll confirm whether I can help where you live."
+        },
+        {
+          "q": "What should I have ready for our call?",
+          "a": "Your current insurance card or plan documents (if you have them), a list of your doctors and prescriptions, and a monthly budget you're comfortable with. Please share health details during the call, not on website forms."
+        },
+        {
+          "q": "Do you charge a fee for insurance help?",
+          "a": "There's no fee for insurance consultations. Agents are generally paid by the insurance company when a policy is placed. Small-business consulting packages are separate and priced on the Shop page."
+        }
+      ]
+    },
+    {
+      "title": "Coverage",
+      "items": [
+        {
+          "q": "Can I get health insurance outside open enrollment?",
+          "a": "Usually only with a Special Enrollment Period, which follows a qualifying life event such as losing other coverage, moving, marriage, or having a baby. Many other plans, like life, dental, and supplemental coverage, can be applied for any time of year."
+        },
+        {
+          "q": "What is hospital indemnity or critical illness insurance?",
+          "a": "These are supplemental plans that pay cash benefits when you're hospitalized or diagnosed with a covered condition. You decide how to use the money — deductibles, bills, or everyday expenses."
+        },
+        {
+          "q": "I'm self-employed or a 1099 worker. What can protect my income?",
+          "a": "Disability, sickness, and accident plans can pay cash benefits directly to you if you can't work because of a covered illness or injury. Individual and group plans are available."
+        },
+        {
+          "q": "What's the difference between term and whole life insurance?",
+          "a": "Term life covers you for a set number of years and usually costs less. Whole life lasts your lifetime and can build cash value. The right choice depends on your goals and budget."
+        }
+      ]
+    },
+    {
+      "title": "Medicare & seniors",
+      "items": [
+        {
+          "q": "When should I start looking at Medicare?",
+          "a": "Your Initial Enrollment Period is a 7-month window: the 3 months before the month you turn 65, your birthday month, and the 3 months after. Starting a few months early gives you time to compare."
+        },
+        {
+          "q": "Does it cost more to enroll through an agent?",
+          "a": "No. Plan premiums are set by the insurance company and are the same whether you enroll with an agent or on your own."
+        },
+        {
+          "q": "Do you offer every Medicare plan?",
+          "a": "We do not offer every plan available in your area. Currently we represent [#] organizations which offer [#] products in your area. Please contact Medicare.gov, 1-800-MEDICARE, or your local State Health Insurance Program (SHIP) to get information on all of your options."
+        }
+      ]
+    },
+    {
+      "title": "Small business",
+      "items": [
+        {
+          "q": "What does LuvUrCity's business consulting include?",
+          "a": "Startup coordination, marketing and client acquisition, hiring and interview support, administrative systems, operations and workflow setup, and employee benefits guidance."
+        },
+        {
+          "q": "How do I pay for a consulting package?",
+          "a": "Through the Shop page using secure Stripe checkout. You can also book a free call first to choose the right package."
+        },
+        {
+          "q": "Can you help me offer benefits to my employees?",
+          "a": "Yes. I can review options for group and supplemental benefits and help with employee education and enrollment."
+        }
+      ]
+    },
+    {
+      "title": "Privacy & this website",
+      "items": [
+        {
+          "q": "Is it safe to use the City chat helper?",
+          "a": "City is an automated helper that points you to the right page or contact. It doesn't save your conversation and can't give quotes or coverage advice. Please don't type health or medical details into it."
+        },
+        {
+          "q": "What happens to the information I submit on forms?",
+          "a": "It's used only to respond to your request. It isn't sold. See the Privacy Policy for details."
+        }
+      ]
+    }
+  ]
+}

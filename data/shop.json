@@ -1,0 +1,80 @@
+{
+  "kicker": "Shop",
+  "headline": "Small-business consulting packages",
+  "intro": "Clear, fixed-price help to get your business organized, compliant, and growing. Pick a package, or book a free call and we'll choose together.",
+  "packages": [
+    {
+      "name": "Startup Strategy Session",
+      "price": "$150",
+      "cadence": "one time",
+      "summary": "A focused 90-minute working session for new or soon-to-launch businesses.",
+      "features": [
+        "90-minute strategy call",
+        "Startup checklist tailored to your business",
+        "30-day action plan",
+        "Follow-up email summary"
+      ],
+      "featured": false,
+      "stripeLink": "",
+      "buttonText": "Buy now",
+      "requestText": "Request this package",
+      "active": true
+    },
+    {
+      "name": "Business Launch Package",
+      "price": "$497",
+      "cadence": "one time",
+      "summary": "Hands-on setup support to launch with the right foundation.",
+      "features": [
+        "Business setup coordination",
+        "Administrative systems setup",
+        "Marketing and client-acquisition starter plan",
+        "Two 45-minute follow-up calls"
+      ],
+      "featured": true,
+      "stripeLink": "",
+      "buttonText": "Buy now",
+      "requestText": "Request this package",
+      "active": true
+    },
+    {
+      "name": "Growth Partner",
+      "price": "$297",
+      "cadence": "per month",
+      "summary": "Ongoing support for owners ready to grow, hire, and streamline.",
+      "features": [
+        "Monthly strategy call",
+        "Marketing and hiring support",
+        "Operations and workflow setup",
+        "Email support between calls",
+        "Cancel anytime"
+      ],
+      "featured": false,
+      "stripeLink": "",
+      "buttonText": "Subscribe",
+      "requestText": "Request this package",
+      "active": true
+    },
+    {
+      "name": "Employee Benefits Review",
+      "price": "Free",
+      "cadence": "",
+      "summary": "For employers exploring benefits for their team.",
+      "features": [
+        "Review of your current benefits (if any)",
+        "Options for group and supplemental coverage",
+        "Enrollment and employee education plan"
+      ],
+      "featured": false,
+      "stripeLink": "/#booking",
+      "buttonText": "Book free review",
+      "requestText": "Book free review",
+      "active": true
+    }
+  ],
+  "notes": [
+    "Checkout is handled securely by Stripe. LuvUrCity never sees or stores your card number.",
+    "Insurance products are never sold through this page. Coverage is quoted and enrolled personally after a consultation.",
+    "Questions before you buy? Email luvurcity1125@gmail.com or call/text 872-777-7991."
+  ]
+}

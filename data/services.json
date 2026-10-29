@@ -2,16 +2,151 @@
   "title": "Coverage & services",
   "intro": "One trusted contact for the coverage your family needs and the support your business needs.",
   "services": [
-    {"id": "svc-health", "icon": "heart", "title": "Health Insurance", "text": "Individual and family plans, including Marketplace / ACA guidance and help comparing networks and costs.", "contact": "insurance"},
-    {"id": "svc-dental", "icon": "smile", "title": "Dental & Vision", "text": "Keep checkups, cleanings, glasses, and contacts affordable for the whole family.", "contact": "insurance"},
-    {"id": "svc-life", "icon": "shield", "title": "Life Insurance", "text": "Term and whole life options to protect the people who count on you.", "contact": "insurance"},
-    {"id": "svc-final", "icon": "dove", "title": "Final Expense", "text": "Coverage that helps loved ones handle end-of-life costs without financial strain.", "contact": "insurance"},
-    {"id": "svc-disability", "icon": "wallet", "title": "Disability & Cash Benefits", "text": "Short and long-term disability, sickness, and accident plans that pay cash directly to you — built for 1099 workers too.", "contact": "insurance"},
-    {"id": "svc-critical", "icon": "plus", "title": "Critical Care & Hospital Indemnity", "text": "Cash benefits for hospital stays and serious diagnoses to help cover what health insurance doesn't.", "contact": "insurance"},
-    {"id": "svc-senior", "icon": "sun", "title": "Senior Benefits", "text": "Guidance on Medicare Advantage, supplement, and prescription drug options for people turning 65 and beyond.", "contact": "insurance"},
-    {"id": "svc-ltc", "icon": "home", "title": "Long-Term Care", "text": "Plan ahead for care needs so you keep your independence and protect your savings.", "contact": "insurance"},
-    {"id": "svc-retire", "icon": "chart", "title": "Annuities & Retirement", "text": "Options to build and protect retirement income over time.", "contact": "insurance"},
-    {"id": "svc-group", "icon": "users", "title": "Group & Employee Benefits", "text": "Benefits education and enrollment for employers and teams of every size.", "contact": "insurance"},
-    {"id": "svc-business", "icon": "briefcase", "title": "Small Business Consulting", "text": "Startup coordination, marketing and client acquisition, hiring support, admin systems, and workflow setup.", "contact": "city"}
-  ]
+    {
+      "id": "svc-health",
+      "icon": "heart",
+      "title": "Health Insurance",
+      "text": "Individual and family plans, including Marketplace / ACA guidance and help comparing networks and costs.",
+      "contact": "insurance",
+      "details": "Individual and family health plans, including Marketplace (ACA) options. I'll help you compare premiums, deductibles, and doctor networks so you know what you're paying for before you enroll.",
+      "whoFor": [
+        "Families and individuals",
+        "Self-employed and 1099 workers",
+        "Anyone changing or losing job-based coverage"
+      ]
+    },
+    {
+      "id": "svc-dental",
+      "icon": "smile",
+      "title": "Dental & Vision",
+      "text": "Keep checkups, cleanings, glasses, and contacts affordable for the whole family.",
+      "contact": "insurance",
+      "details": "Stand-alone dental and vision plans that make routine cleanings, exams, glasses, and contacts more affordable, for you or the whole household.",
+      "whoFor": [
+        "Families with kids",
+        "Adults without employer dental",
+        "Anyone who wears glasses or contacts"
+      ]
+    },
+    {
+      "id": "svc-life",
+      "icon": "shield",
+      "title": "Life Insurance",
+      "text": "Term and whole life options to protect the people who count on you.",
+      "contact": "insurance",
+      "details": "Term life for affordable protection during your working years, and whole life for lifetime coverage that can build cash value. We'll size coverage to what your family would actually need.",
+      "whoFor": [
+        "Parents and caregivers",
+        "Homeowners with a mortgage",
+        "Business owners protecting partners or loans"
+      ]
+    },
+    {
+      "id": "svc-final",
+      "icon": "dove",
+      "title": "Final Expense",
+      "text": "Coverage that helps loved ones handle end-of-life costs without financial strain.",
+      "contact": "insurance",
+      "details": "Smaller whole life policies designed to cover funeral and end-of-life costs, so loved ones aren't left with the bill.",
+      "whoFor": [
+        "Adults planning ahead",
+        "Seniors on a fixed income",
+        "Families who want to avoid fundraising after a loss"
+      ]
+    },
+    {
+      "id": "svc-disability",
+      "icon": "wallet",
+      "title": "Disability & Cash Benefits",
+      "text": "Short and long-term disability, sickness, and accident plans that pay cash directly to you — built for 1099 workers too.",
+      "contact": "insurance",
+      "details": "Short-term and long-term disability, sickness, and accident plans that pay cash benefits directly to you when you can't work. Available as individual or group plans.",
+      "whoFor": [
+        "Entrepreneurs and independent contractors",
+        "1099 and gig workers",
+        "Employees whose job lacks paid sick leave"
+      ]
+    },
+    {
+      "id": "svc-critical",
+      "icon": "plus",
+      "title": "Critical Care & Hospital Indemnity",
+      "text": "Cash benefits for hospital stays and serious diagnoses to help cover what health insurance doesn't.",
+      "contact": "insurance",
+      "details": "Critical illness and hospital indemnity plans pay cash when you're hospitalized or diagnosed with a covered condition. Use it for deductibles, bills, travel, or lost income.",
+      "whoFor": [
+        "People with high-deductible health plans",
+        "Families on a tight budget",
+        "Anyone who wants an extra layer of protection"
+      ]
+    },
+    {
+      "id": "svc-senior",
+      "icon": "sun",
+      "title": "Senior Benefits",
+      "text": "Guidance on Medicare Advantage, supplement, and prescription drug options for people turning 65 and beyond.",
+      "contact": "insurance",
+      "details": "Turning 65 or already on Medicare? I'll walk you through Medicare Advantage, Medicare Supplement, and Part D prescription options and help you understand your enrollment windows.",
+      "whoFor": [
+        "People turning 65",
+        "Adults retiring and leaving employer coverage",
+        "Caregivers helping a parent compare plans"
+      ]
+    },
+    {
+      "id": "svc-ltc",
+      "icon": "home",
+      "title": "Long-Term Care",
+      "text": "Plan ahead for care needs so you keep your independence and protect your savings.",
+      "contact": "insurance",
+      "details": "Long-term care coverage helps pay for in-home care, assisted living, or nursing care, so a long illness doesn't drain your savings.",
+      "whoFor": [
+        "Adults in their 40s–60s planning ahead",
+        "Couples protecting retirement savings",
+        "Anyone who wants to stay independent"
+      ]
+    },
+    {
+      "id": "svc-retire",
+      "icon": "chart",
+      "title": "Annuities & Retirement",
+      "text": "Options to build and protect retirement income over time.",
+      "contact": "insurance",
+      "details": "Annuities that can help grow savings and create steady retirement income. We'll talk through timing, fees, and how each option fits your goals.",
+      "whoFor": [
+        "Pre-retirees",
+        "People who want predictable income",
+        "Savers looking beyond a basic account"
+      ]
+    },
+    {
+      "id": "svc-group",
+      "icon": "users",
+      "title": "Group & Employee Benefits",
+      "text": "Benefits education and enrollment for employers and teams of every size.",
+      "contact": "insurance",
+      "details": "Group health and supplemental benefits for employers, plus employee education and enrollment so your team actually understands and uses what you offer.",
+      "whoFor": [
+        "Small businesses adding first benefits",
+        "Employers wanting better enrollment",
+        "Nonprofits and growing teams"
+      ]
+    },
+    {
+      "id": "svc-business",
+      "icon": "briefcase",
+      "title": "Small Business Consulting",
+      "text": "Startup coordination, marketing and client acquisition, hiring support, admin systems, and workflow setup.",
+      "contact": "city",
+      "details": "Practical help to start and grow: business startup coordination, marketing and client acquisition, hiring and interview support, administrative systems, and operations and workflow setup. Employee benefits guidance is included at no charge.",
+      "whoFor": [
+        "New and early-stage business owners",
+        "Solo entrepreneurs ready to hire",
+        "Owners who need systems that save time"
+      ]
+    }
+  ],
+  "pageKicker": "Services",
+  "pageHeadline": "Coverage for every stage of life — and support for your business",
+  "pageIntro": "Every plan starts with a free conversation about your budget, your family, and what you want to protect. Here's what we can work on together."
 }

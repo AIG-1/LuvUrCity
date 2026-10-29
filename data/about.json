@@ -1,0 +1,53 @@
+{
+  "kicker": "About Chasity",
+  "headline": "Real-world benefits experience. A client-first approach.",
+  "intro": "I help individuals, families, and small businesses make informed decisions and secure the benefits they deserve — one conversation at a time.",
+  "photo": "",
+  "story": [
+    "I'm Chasity D. Chapel, a licensed insurance agent and benefits specialist based in Chicagoland. I've been dedicated to helping others since 2009, and I started LuvUrCity because people deserve someone who explains coverage plainly and stays available after the paperwork is signed.",
+    "Before focusing on my own practice, I worked as a Benefit Enrollment Counselor for Chicago Public Schools, guiding employees through their options every enrollment season. I've also served as a Benefits Specialist with Combined Insurance, a Chubb company. That experience taught me what people actually worry about: Will this cover my doctor? What happens if I can't work? Can I afford this next year?",
+    "Today I work with families, seniors, independent contractors, and employers across Chicagoland and in the states where I'm licensed. And because so many of my clients are building businesses of their own, LuvUrCity also offers hands-on small-business consulting — from startup setup to hiring and systems."
+  ],
+  "credentials": [
+    {
+      "label": "Licensed health insurance agent",
+      "detail": "Since 2008"
+    },
+    {
+      "label": "Licensed to offer Medicare plans",
+      "detail": "Since 2019"
+    },
+    {
+      "label": "Licensed life insurance agent",
+      "detail": "Since 2024"
+    },
+    {
+      "label": "Benefit Enrollment Counselor",
+      "detail": "Chicago Public Schools, 2 years"
+    },
+    {
+      "label": "Benefits Specialist",
+      "detail": "Combined Insurance, a Chubb company"
+    },
+    {
+      "label": "Licensed in multiple states",
+      "detail": "NPN 18893699"
+    }
+  ],
+  "missionTitle": "My mission",
+  "mission": "Your health. Your family. Your future. My mission is to protect people and help build futures — with honest guidance, real options, and support you can count on.",
+  "values": [
+    {
+      "title": "Listen first",
+      "text": "Your situation drives the recommendation, not a sales quota."
+    },
+    {
+      "title": "Explain plainly",
+      "text": "No jargon. You'll understand what you're buying and why."
+    },
+    {
+      "title": "Stay with you",
+      "text": "Claims questions, renewals, life changes — I'm still your contact."
+    }
+  ]
+}

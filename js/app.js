@@ -8,6 +8,15 @@
     const s = String(u ?? "").trim();
     return /^(https?:|mailto:|tel:|#|\/)/i.test(s) ? s : "#";
   };
+  /* Same-page anchors in admin data (#svc-health, #booking) work from every page */
+  const PAGE = document.body.dataset.page || "home";
+  const link = (u) => {
+    const s = safeUrl(u);
+    if (!s.startsWith("#") || s === "#") return s;
+    if (document.getElementById(s.slice(1))) return s;
+    if (PAGE !== "services" && /^#(svc-|services)/.test(s)) return "/services.html" + s;
+    return PAGE === "home" ? s : "/" + s;
+  };
   const tel = (p) => "tel:+1" + String(p || "").replace(/\D/g, "").replace(/^1/, "");
   const store = {
     get(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } },
@@ -69,27 +78,35 @@
     if (s.conceptPreview) $("#conceptBar").hidden = false;
     if (s.logo) $("#brandLogo").innerHTML = `<img src="${esc(s.logo)}" alt="">`;
     const h = s.hero || {};
-    setText("heroEyebrow", h.eyebrow); setText("heroHeadline", h.headline); setText("heroSub", h.subhead);
-    setText("heroCta1", h.ctaPrimary); setText("heroCta2", h.ctaSecondary); setText("heroTitle", s.agentTitle);
-    $("#heroCta2").href = tel(s.phone);
-    if (s.headshot) $("#heroPhoto").src = s.headshot;
-    if (s.agentName) $("#heroPhoto").alt = `${s.agentName}, ${s.agentTitle || "licensed insurance agent"}`;
-    $("#heroTrust").innerHTML = (h.trust || []).map((t) => `<li>${esc(t)}</li>`).join("");
+    if ($("#heroHeadline")) {
+      setText("heroEyebrow", h.eyebrow); setText("heroHeadline", h.headline); setText("heroSub", h.subhead);
+      setText("heroCta1", h.ctaPrimary); setText("heroCta2", h.ctaSecondary); setText("heroTitle", s.agentTitle);
+      $("#heroCta2").href = tel(s.phone);
+      if (s.headshot) $("#heroPhoto").src = s.headshot;
+      if (s.agentName) $("#heroPhoto").alt = `${s.agentName}, ${s.agentTitle || "licensed insurance agent"}`;
+      $("#heroTrust").innerHTML = (h.trust || []).map((t) => `<li>${esc(t)}</li>`).join("");
+    }
 
     const w = s.why || {};
-    setText("whyTitle", w.title); setText("whyIntro", w.intro);
-    $("#whyList").innerHTML = (w.items || []).map((i) => `<li><h3>${esc(i.title)}</h3><p>${esc(i.text)}</p></li>`).join("");
+    if ($("#whyList")) {
+      setText("whyTitle", w.title); setText("whyIntro", w.intro);
+      $("#whyList").innerHTML = (w.items || []).map((i) => `<li><h3>${esc(i.title)}</h3><p>${esc(i.text)}</p></li>`).join("");
+    }
 
     const b = s.booking || {};
-    setText("bookingTitle", b.title); setText("bookingText", b.text);
-    const bp = $("#bkPhone"); bp.textContent = s.phone; bp.href = tel(s.phone);
-    const bi = $("#bkEmailIns"); bi.textContent = s.emailInsurance; bi.href = "mailto:" + s.emailInsurance;
-    const bc = $("#bkEmailCity"); bc.textContent = s.emailCity; bc.href = "mailto:" + s.emailCity;
-    $("#bkLink").href = safeUrl(s.bookingUrl);
-    $("#calLoad").addEventListener("click", () => {
-      const url = safeUrl(s.bookingUrl);
-      $("#calendarCard").innerHTML = `<iframe title="Schedule a consultation with ${esc(s.agentName)}" src="${esc(url)}${url.includes("?") ? "&" : "?"}hide_gdpr_banner=1" loading="lazy"></iframe>`;
-    });
+    if ($("#bkPhone")) {
+      setText("bookingTitle", b.title); setText("bookingText", b.text);
+      const bp = $("#bkPhone"); bp.textContent = s.phone; bp.href = tel(s.phone);
+      const bi = $("#bkEmailIns"); bi.textContent = s.emailInsurance; bi.href = "mailto:" + s.emailInsurance;
+      const bc = $("#bkEmailCity"); bc.textContent = s.emailCity; bc.href = "mailto:" + s.emailCity;
+      $("#bkLink").href = safeUrl(s.bookingUrl);
+      $("#calLoad").addEventListener("click", () => {
+        const url = safeUrl(s.bookingUrl);
+        $("#calendarCard").innerHTML = `<iframe title="Schedule a consultation with ${esc(s.agentName)}" src="${esc(url)}${url.includes("?") ? "&" : "?"}hide_gdpr_banner=1" loading="lazy"></iframe>`;
+      });
+    }
+    document.querySelectorAll("[data-tel]").forEach((a) => { a.href = tel(s.phone); if (!a.dataset.keep) a.textContent = a.textContent.replace(/\d{3}-\d{3}-\d{4}/, s.phone); });
+    document.querySelectorAll("[data-book]").forEach((a) => { a.href = safeUrl(s.bookingUrl); });
 
     setText("signupTitle", (s.signup || {}).title); setText("signupText", (s.signup || {}).text);
 
@@ -114,12 +131,13 @@
 
   function renderTicker(t) {
     if (!t || !t.items) return;
-    const track = $("#tickerTrack");
+    const track = $("#tickerTrack"); if (!track) return;
     track.style.setProperty("--dur", (t.speed || 40) + "s");
-    loop(track, t.items.map((i) => `<a href="${esc(safeUrl(i.link))}">${esc(i.text)}</a>`).join(""));
+    loop(track, t.items.map((i) => `<a href="${esc(link(i.link))}">${esc(i.text)}</a>`).join(""));
   }
 
   function renderFlyers(f) {
+    if (!$(".flyers")) return;
     if (!f || !f.flyers || !f.flyers.length) { $(".flyers").hidden = true; return; }
     const track = $("#flyerTrack");
     track.style.setProperty("--dur", (f.speed || 45) + "s");
@@ -137,7 +155,7 @@
   }
 
   function renderServices(s) {
-    if (!s || !s.services) return;
+    if (!s || !s.services || !$("#svcGrid")) return;
     setText("servicesTitle", s.title); setText("servicesIntro", s.intro);
     $("#svcGrid").innerHTML = s.services.map((x) => {
       const biz = x.contact === "city";
@@ -150,7 +168,7 @@
   }
 
   function renderReviews(r) {
-    if (!r) return;
+    if (!r || !$("#reviewGrid")) return;
     setText("reviewsTitle", r.title);
     const list = (r.reviews || []).filter((x) => x.published !== false);
     $("#reviewGrid").innerHTML = list.length
@@ -163,7 +181,7 @@
   }
 
   function renderPosts(p) {
-    if (!p || !p.posts) return;
+    if (!p || !p.posts || !$("#postGrid")) return;
     setText("postsTitle", p.title);
     const fmt = (d) => { const t = new Date(d + "T12:00:00"); return isNaN(t) ? "" : t.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }); };
     $("#postGrid").innerHTML = p.posts.slice(0, 3).map((x) => `
@@ -186,7 +204,7 @@
       const m = document.createElement("div");
       m.className = "msg " + cls;
       m.innerHTML = esc(text) + (actions && actions.length
-        ? `<div class="msg-actions">${actions.map((a) => `<a href="${esc(safeUrl(a.link))}"${/^https?:/.test(a.link) ? ' target="_blank" rel="noopener"' : ""}>${esc(a.label)}</a>`).join("")}</div>` : "");
+        ? `<div class="msg-actions">${actions.map((a) => `<a href="${esc(link(a.link))}"${/^https?:/.test(a.link) ? ' target="_blank" rel="noopener"' : ""}>${esc(a.label)}</a>`).join("")}</div>` : "");
       log.appendChild(m); log.scrollTop = log.scrollHeight;
     };
     const answer = (opt) => say(opt.answer, "bot-msg", opt.actions);
@@ -230,6 +248,79 @@
     }
   }
 
+  /* ---------- Inner pages ---------- */
+  const list = (a) => (a || []).map((x) => `<li>${esc(x)}</li>`).join("");
+  const mail = (to, subject) => `mailto:${to}?subject=${encodeURIComponent(subject)}`;
+
+  function renderPageHead(d) {
+    setText("pageKicker", d.kicker); setText("pageTitle", d.headline || d.title); setText("pageIntro", d.intro);
+  }
+
+  function renderAbout(a, site) {
+    if (!a || !$("#aboutStory")) return;
+    renderPageHead(a);
+    if (a.photo || (site && site.headshot)) $("#aboutPhoto").src = a.photo || site.headshot;
+    $("#aboutStory").innerHTML = (a.story || []).map((p) => `<p>${esc(p)}</p>`).join("");
+    $("#aboutCreds").innerHTML = (a.credentials || []).map((c) => `<li><strong>${esc(c.label)}</strong><span>${esc(c.detail)}</span></li>`).join("");
+    setText("aboutMissionTitle", a.missionTitle); setText("aboutMission", a.mission);
+    $("#aboutValues").innerHTML = (a.values || []).map((v) => `<li><h3>${esc(v.title)}</h3><p>${esc(v.text)}</p></li>`).join("");
+  }
+
+  function renderServicesPage(s, site) {
+    if (!s || !$("#svcDetail")) return;
+    renderPageHead({ kicker: s.pageKicker, headline: s.pageHeadline, intro: s.pageIntro });
+    const ins = s.services.filter((x) => x.contact !== "city"), biz = s.services.filter((x) => x.contact === "city");
+    $("#svcJump").innerHTML = s.services.map((x) => `<a href="#${esc(x.id)}">${esc(x.title)}</a>`).join("");
+    const card = (x) => {
+      const isBiz = x.contact === "city", to = isBiz ? site.emailCity : site.emailInsurance;
+      return `<article class="svc-row${isBiz ? " biz" : ""}" id="${esc(x.id)}">
+        <span class="svc-icon">${icon(x.icon)}</span>
+        <div class="svc-row-body">
+          <h3>${esc(x.title)}</h3>
+          <p>${esc(x.details || x.text)}</p>
+          ${x.whoFor && x.whoFor.length ? `<p class="who">Good fit for:</p><ul class="ticks">${list(x.whoFor)}</ul>` : ""}
+          <div class="row-ctas">
+            <a class="btn btn-sm btn-magenta" href="/#booking">Book a free consult</a>
+            <a class="btn btn-sm btn-outline" href="${esc(mail(to, x.title + " question"))}">Email about this</a>
+            ${isBiz ? `<a class="btn btn-sm btn-outline" href="/shop.html">See packages</a>` : ""}
+          </div>
+        </div></article>`;
+    };
+    $("#svcDetail").innerHTML = `<h2 class="group-title">Insurance & benefits</h2>${ins.map(card).join("")}
+      ${biz.length ? `<h2 class="group-title">Small business</h2>${biz.map(card).join("")}` : ""}`;
+    if (location.hash) { const el = document.getElementById(location.hash.slice(1)); if (el) setTimeout(() => el.scrollIntoView(), 50); }
+  }
+
+  function renderShop(sh, site) {
+    if (!sh || !$("#shopGrid")) return;
+    renderPageHead(sh);
+    $("#shopGrid").innerHTML = (sh.packages || []).filter((p) => p.active !== false).map((p) => {
+      const href = p.stripeLink ? safeUrl(p.stripeLink) : mail(site.emailCity, "Package request: " + p.name);
+      const ext = /^https?:/.test(p.stripeLink || "") ? ' target="_blank" rel="noopener"' : "";
+      return `<article class="pkg${p.featured ? " featured" : ""}">
+        ${p.featured ? `<span class="pkg-badge">Most popular</span>` : ""}
+        <h3>${esc(p.name)}</h3>
+        <p class="pkg-price"><span>${esc(p.price)}</span>${p.cadence ? `<small>${esc(p.cadence)}</small>` : ""}</p>
+        <p class="pkg-sum">${esc(p.summary)}</p>
+        <ul class="ticks">${list(p.features)}</ul>
+        <a class="btn ${p.featured ? "btn-gold" : "btn-magenta"}" href="${esc(href)}"${ext}>${esc(p.stripeLink ? p.buttonText || "Buy now" : p.requestText || "Request this package")}</a>
+      </article>`;
+    }).join("");
+    $("#shopNotes").innerHTML = (sh.notes || []).map((n) => `<p>${esc(n)}</p>`).join("");
+  }
+
+  function renderFaq(f) {
+    if (!f || !$("#faqList")) return;
+    renderPageHead(f);
+    const groups = f.groups || [];
+    $("#faqNav").innerHTML = groups.map((g, i) => `<a href="#faq-${i}">${esc(g.title)}</a>`).join("");
+    $("#faqList").innerHTML = groups.map((g, i) => `
+      <section class="faq-group" id="faq-${i}" aria-labelledby="faqh-${i}">
+        <h2 id="faqh-${i}">${esc(g.title)}</h2>
+        ${(g.items || []).map((q) => `<details class="faq"><summary>${esc(q.q)}</summary><div class="faq-a">${(q.a || "").split(/\n+/).map((p) => `<p>${esc(p)}</p>`).join("")}</div></details>`).join("")}
+      </section>`).join("");
+  }
+
   function initNav() {
     const btn = $(".nav-toggle"), nav = $("#siteNav");
     btn.addEventListener("click", () => {
@@ -242,11 +333,18 @@
     $("#year").textContent = new Date().getFullYear();
     initNav(); wireMotion();
     if (reduceMotion) document.querySelectorAll(".motion-btn").forEach((b) => (b.hidden = true));
-    Promise.all(["site", "ticker", "flyers", "services", "reviews", "posts", "bot"].map(getJSON))
-      .then(([site, ticker, flyers, services, reviews, posts, bot]) => {
-        renderSite(site); renderTicker(ticker); renderFlyers(flyers); renderServices(services);
-        renderReviews(reviews); renderPosts(posts); initBot(bot);
-      });
+    const PAGE_DATA = { home: ["flyers", "services", "reviews", "posts"], about: ["about"], services: ["services"], shop: ["shop"], faq: ["faq"] };
+    const extra = PAGE_DATA[PAGE] || [];
+    Promise.all(["site", "ticker", "bot", ...extra].map(getJSON)).then(([site, ticker, bot, ...rest]) => {
+      const d = Object.fromEntries(extra.map((k, i) => [k, rest[i]]));
+      const run = (fn) => { try { fn(); } catch (e) { console.error(e); } };
+      run(() => renderSite(site));
+      run(() => renderFlyers(d.flyers)); run(() => renderServices(d.services)); run(() => renderReviews(d.reviews)); run(() => renderPosts(d.posts));
+      run(() => renderAbout(d.about, site)); run(() => renderServicesPage(d.services, site || {}));
+      run(() => renderShop(d.shop, site || {})); run(() => renderFaq(d.faq));
+      run(() => renderTicker(ticker)); /* after page content so anchors resolve */
+      run(() => initBot(bot));
+    });
   });
 })();
 

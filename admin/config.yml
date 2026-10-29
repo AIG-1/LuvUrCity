@@ -117,8 +117,11 @@ collections:
         label: "Services"
         file: "data/services.json"
         fields:
-          - {label: "Section title", name: "title", widget: "string"}
-          - {label: "Intro", name: "intro", widget: "text"}
+          - {label: "Homepage section title", name: "title", widget: "string"}
+          - {label: "Homepage intro", name: "intro", widget: "text"}
+          - {label: "Services page — small label", name: "pageKicker", widget: "string"}
+          - {label: "Services page — headline", name: "pageHeadline", widget: "string"}
+          - {label: "Services page — intro", name: "pageIntro", widget: "text"}
           - label: "Services"
             name: "services"
             widget: "list"
@@ -128,7 +131,9 @@ collections:
               - {label: "Anchor ID (used by ticker links, e.g. svc-health)", name: "id", widget: "string"}
               - {label: "Icon", name: "icon", widget: "select", options: ["heart","smile","shield","dove","wallet","plus","sun","home","chart","users","briefcase"]}
               - {label: "Title", name: "title", widget: "string"}
-              - {label: "Text", name: "text", widget: "text"}
+              - {label: "Short text (homepage card)", name: "text", widget: "text"}
+              - {label: "Full description (Services page)", name: "details", widget: "text", required: false}
+              - {label: "Good fit for (Services page)", name: "whoFor", widget: "list", required: false, field: {label: "Who", name: "who", widget: "string"}}
               - {label: "Type", name: "contact", widget: "select", options: [{label: "Insurance", value: "insurance"}, {label: "Consulting / City services (highlighted)", value: "city"}]}
 
       # ---------- REVIEWS ----------
@@ -198,3 +203,80 @@ collections:
                 fields:
                   - {label: "Label", name: "label", widget: "string"}
                   - {label: "Link", name: "link", widget: "string"}
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "about"
+        label: "About page"
+        file: "data/about.json"
+        fields:
+          - {label: "Small label", name: "kicker", widget: "string"}
+          - {label: "Headline", name: "headline", widget: "string"}
+          - {label: "Intro", name: "intro", widget: "text"}
+          - {label: "Photo (empty = headshot from Site Settings)", name: "photo", widget: "image", required: false}
+          - {label: "Story paragraphs", name: "story", widget: "list", field: {label: "Paragraph", name: "p", widget: "text"}}
+          - label: "Credentials"
+            name: "credentials"
+            widget: "list"
+            summary: "{{fields.label}}"
+            fields:
+              - {label: "Credential", name: "label", widget: "string"}
+              - {label: "Detail", name: "detail", widget: "string"}
+          - {label: "Mission title", name: "missionTitle", widget: "string"}
+          - {label: "Mission statement", name: "mission", widget: "text"}
+          - label: "Values"
+            name: "values"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Text", name: "text", widget: "text"}
+
+      - name: "shop"
+        label: "Shop page (consulting packages)"
+        file: "data/shop.json"
+        fields:
+          - {label: "Small label", name: "kicker", widget: "string"}
+          - {label: "Headline", name: "headline", widget: "string"}
+          - {label: "Intro", name: "intro", widget: "text"}
+          - label: "Packages"
+            name: "packages"
+            widget: "list"
+            label_singular: "Package"
+            summary: "{{fields.name}} — {{fields.price}}"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Price (e.g. $150 or Free)", name: "price", widget: "string"}
+              - {label: "Billing (e.g. one time, per month)", name: "cadence", widget: "string", required: false}
+              - {label: "Summary", name: "summary", widget: "text"}
+              - {label: "What's included", name: "features", widget: "list", field: {label: "Item", name: "item", widget: "string"}}
+              - {label: "Highlight as most popular", name: "featured", widget: "boolean", default: false}
+              - {label: "Stripe Payment Link (empty = 'Request' button that emails you)", name: "stripeLink", widget: "string", required: false}
+              - {label: "Button text when Stripe link is set", name: "buttonText", widget: "string", default: "Buy now"}
+              - {label: "Button text when no Stripe link", name: "requestText", widget: "string", default: "Request this package"}
+              - {label: "Show on site", name: "active", widget: "boolean", default: true}
+          - {label: "Notes under packages", name: "notes", widget: "list", field: {label: "Note", name: "note", widget: "text"}}
+
+      - name: "faq"
+        label: "FAQ page"
+        file: "data/faq.json"
+        fields:
+          - {label: "Small label", name: "kicker", widget: "string"}
+          - {label: "Headline", name: "headline", widget: "string"}
+          - {label: "Intro", name: "intro", widget: "text"}
+          - label: "Topics"
+            name: "groups"
+            widget: "list"
+            label_singular: "Topic"
+            summary: "{{fields.title}}"
+            fields:
+              - {label: "Topic title", name: "title", widget: "string"}
+              - label: "Questions"
+                name: "items"
+                widget: "list"
+                label_singular: "Question"
+                summary: "{{fields.q}}"
+                fields:
+                  - {label: "Question", name: "q", widget: "string"}
+                  - {label: "Answer", name: "a", widget: "text"}
