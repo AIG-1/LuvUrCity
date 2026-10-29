@@ -1,0 +1,15 @@
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    # Concept preview: remove the next line after client approval
+    X-Robots-Tag = "noindex, nofollow"

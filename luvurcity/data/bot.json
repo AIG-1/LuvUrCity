@@ -1,0 +1,107 @@
+{
+  "name": "City",
+  "avatar": "",
+  "autoOpenSeconds": 5,
+  "greeting": "Hi, I'm City, LuvUrCity's virtual helper. What can I help you find today?",
+  "disclosure": "I'm an automated assistant. I can point you to the right place, but I can't give quotes or coverage advice — Chasity handles that personally. Please don't share health or medical details here.",
+  "fallback": "I'm not sure about that one. The fastest way to get an answer is to talk with Chasity directly.",
+  "options": [
+    {
+      "label": "Get a free quote",
+      "keywords": "quote, price, cost, how much, rate, premium",
+      "answer": "Quotes depend on your age, location, and needs, so Chasity prepares each one personally. Book a free 30-minute call or call/text her and she'll walk you through your options.",
+      "actions": [
+        {
+          "label": "Book a call",
+          "link": "#booking"
+        },
+        {
+          "label": "Call 872-777-7991",
+          "link": "tel:+18727777991"
+        }
+      ]
+    },
+    {
+      "label": "Book a consultation",
+      "keywords": "book, appointment, schedule, consult, meeting, calendar",
+      "answer": "You can pick a time right on this page. Consultations are free, about 30 minutes, and there's no obligation.",
+      "actions": [
+        {
+          "label": "Open the calendar",
+          "link": "#booking"
+        }
+      ]
+    },
+    {
+      "label": "Insurance services",
+      "keywords": "insurance, health, life, dental, vision, disability, final expense, coverage, plan",
+      "answer": "Chasity helps with health, dental & vision, life, final expense, disability and cash-benefit plans, critical care, hospital indemnity, senior benefits, long-term care, annuities, and employee benefits.",
+      "actions": [
+        {
+          "label": "See all services",
+          "link": "#services"
+        }
+      ]
+    },
+    {
+      "label": "Medicare & seniors",
+      "keywords": "medicare, senior, 65, supplement, advantage, part d, prescription",
+      "answer": "Chasity helps people turning 65 and beyond compare Medicare Advantage, supplement, and prescription drug options. We do not offer every plan available in your area. Currently we represent [#] organizations which offer [#] products in your area. Please contact Medicare.gov, 1-800-MEDICARE, or your local State Health Insurance Program (SHIP) to get information on all of your options.",
+      "actions": [
+        {
+          "label": "Book a call",
+          "link": "#booking"
+        },
+        {
+          "label": "Call 872-777-7991",
+          "link": "tel:+18727777991"
+        }
+      ]
+    },
+    {
+      "label": "Small business help",
+      "keywords": "business, startup, llc, marketing, hiring, consulting, employees, entrepreneur",
+      "answer": "LuvUrCity offers small-business consulting: startup coordination, marketing and client acquisition, hiring support, admin systems, workflow setup, and employee benefits guidance.",
+      "actions": [
+        {
+          "label": "Business consulting",
+          "link": "#svc-business"
+        },
+        {
+          "label": "Email about consulting",
+          "link": "mailto:luvurcity1125@gmail.com"
+        }
+      ]
+    },
+    {
+      "label": "FAQs",
+      "keywords": "faq, question, help, how does, what is",
+      "answer": "Common questions: Consultations are free. Chasity works with multiple carriers. She serves Chicagoland and clients in states where she's licensed. Individual and group plans are available.",
+      "actions": [
+        {
+          "label": "Read all FAQs",
+          "link": "/faq.html"
+        }
+      ]
+    },
+    {
+      "label": "Talk to Chasity",
+      "keywords": "talk, human, person, agent, call, text, email, contact, chasity",
+      "answer": "Reach Chasity directly by phone or text at 872-777-7991. For insurance, email chasity.chapel@ia.combined.com. For consulting and LuvUrCity services, email luvurcity1125@gmail.com.",
+      "actions": [
+        {
+          "label": "Call or text",
+          "link": "tel:+18727777991"
+        },
+        {
+          "label": "Email (insurance)",
+          "link": "mailto:chasity.chapel@ia.combined.com"
+        },
+        {
+          "label": "Email (consulting)",
+          "link": "mailto:luvurcity1125@gmail.com"
+        }
+      ]
+    }
+  ]
+}

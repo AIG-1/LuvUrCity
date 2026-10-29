@@ -1,0 +1,14 @@
+{
+  "speed": 40,
+  "items": [
+    {"text": "Health Insurance", "link": "#svc-health"},
+    {"text": "Life Insurance", "link": "#svc-life"},
+    {"text": "Dental & Vision", "link": "#svc-dental"},
+    {"text": "Disability & Cash Benefits", "link": "#svc-disability"},
+    {"text": "Final Expense", "link": "#svc-final"},
+    {"text": "Employee Benefits", "link": "#svc-group"},
+    {"text": "Small Business Consulting", "link": "#svc-business"},
+    {"text": "Book a Free Consultation", "link": "#booking"},
+    {"text": "Call 872-777-7991", "link": "tel:+18727777991"}
+  ]
+}

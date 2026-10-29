@@ -1,0 +1,35 @@
+{
+  "speed": 45,
+  "flyers": [
+    {
+      "image": "/images/flyers/luvurcity-services.jpg",
+      "title": "LuvUrCity Insurance & Benefits Services",
+      "alt": "LuvUrCity flyer: Chasity Chapel, licensed insurance agent. Experience, knowledge, trust. Services include health, dental and vision, life, short and long-term disability, group insurance, employee benefits, critical care and hospital indemnity, long-term care, annuities and retirement, final expense, plus small-business consulting. Call or text 872-777-7991.",
+      "link": "#services"
+    },
+    {
+      "image": "/images/flyers/1099-cash-benefits.jpg",
+      "title": "Cash Benefits for 1099 Workers",
+      "alt": "Flyer for entrepreneurs, independent contractors and 1099 workers: if you were sick or injured and cannot work, would you still receive a paycheck? Cash benefits paid directly to you through disability, sickness and accident plans. Individual or group plans available. Contact Chasity Chapel, benefits coordinator, at 872-777-7991.",
+      "link": "#svc-disability"
+    },
+    {
+      "image": "/images/flyers/health-family-mission.jpg",
+      "title": "Your Health. Your Family. Our Mission.",
+      "alt": "Flyer: Your health, your family, our mission. Chasity Chapel helps individuals, families and businesses with health, senior benefits, life, dental, vision, short-term disability, critical care, hospital indemnity and group insurance. Call 872-777-7991.",
+      "link": "#services"
+    },
+    {
+      "image": "/images/flyers/final-expense-life.jpg",
+      "title": "Final Expense & Life Insurance",
+      "alt": "Flyer: Licensed insurance advisor offering free consultations. Final expense coverage, whole life and term policies, living benefits, and health, dental and vision. Contact Chasity D. Chapel.",
+      "link": "#svc-final"
+    },
+    {
+      "image": "/images/flyers/affordable-health.jpg",
+      "title": "Affordable Health Insurance",
+      "alt": "Flyer: Protect what matters most with affordable health insurance for you and your family. Comprehensive coverage, preventive care, and plans for self-employed people or anyone changing jobs. Speak directly with a live agent.",
+      "link": "#svc-health"
+    }
+  ]
+}
