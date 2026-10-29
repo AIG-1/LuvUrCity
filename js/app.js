@@ -124,7 +124,7 @@
     const track = $("#flyerTrack");
     track.style.setProperty("--dur", (f.speed || 45) + "s");
     loop(track, f.flyers.map((x, i) =>
-      `<button class="flyer" type="button" data-i="${i}" aria-label="Enlarge flyer: ${esc(x.title)}"><img src="${esc(x.image)}" alt="${esc(x.alt || x.title)}" loading="${i < 3 ? "eager" : "lazy"}"></button>`).join(""));
+      `<button class="flyer" type="button" data-i="${i}" aria-label="Enlarge flyer: ${esc(x.title)}"><img src="${esc(x.image)}" alt="${esc(x.alt || x.title)}" loading="eager" decoding="async"></button>`).join(""));
     const lb = $("#lightbox");
     track.addEventListener("click", (e) => {
       const b = e.target.closest(".flyer"); if (!b) return;
