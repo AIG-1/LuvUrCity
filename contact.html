@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact | LuvUrCity</title>
+<meta name="description" content="Contact Chasity Chapel at LuvUrCity for insurance, benefits, events, or small-business consulting. Call or text 872-777-7991.">
+<!-- CONCEPT PREVIEW: remove the next line after the client approves launch -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1B2A4A">
+<link rel="icon" href="/images/brand/icon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/images/brand/icon-180.png">
+<meta property="og:image" content="/images/brand/logo-script-web.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
+</head>
+<body data-page="contact">
+<a class="skip" href="#main">Skip to main content</a>
+
+<div class="concept-bar" id="conceptBar" hidden>Concept preview prepared for LuvUrCity by Applied Intelligence Holdings. Not yet the official site.</div>
+
+<header class="site-header">
+  <div class="wrap nav-row">
+    <a class="brand" href="/">
+      <img class="brand-img" id="brandLogoImg" src="/images/brand/logo-horizontal-web.png" alt="LuvUrCity — Luv Ur City My Way. Chasity Chapel, Insurance &amp; Benefits" width="563" height="160">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="siteNav"><span class="sr">Menu</span><span class="bars" aria-hidden="true"></span></button>
+    <nav id="siteNav" class="site-nav" aria-label="Main">
+      <a href="/">Home</a>
+      <a href="/about.html">About</a>
+      <a href="/services.html">Services</a>
+      <a href="/events.html">Events</a>
+      <a href="/shop.html">Shop</a>
+      <a href="/gallery.html">Gallery</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/reviews.html">Reviews</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/contact.html" aria-current="page">Contact</a>
+      <a class="btn btn-sm btn-magenta nav-cta" href="/#booking">Book Free Consult</a>
+    </nav>
+  </div>
+</header>
+
+<!-- TICKER (editable: data/ticker.json) -->
+<div class="ticker" role="region" aria-label="Services quick links">
+  <div class="ticker-viewport"><div class="ticker-track" id="tickerTrack"></div></div>
+  <button class="motion-btn" data-target="ticker" aria-pressed="false" aria-label="Pause scrolling links">❚❚</button>
+</div>
+
+<main id="main">
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">Contact</span></nav>
+    <p class="kicker on-dark" id="pageKicker">Contact</p>
+    <h1 id="pageTitle">Contact</h1>
+    <p class="lead" id="pageIntro"></p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap contact-grid">
+    <form name="contact-insurance" id="contactForm" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html" class="form-card wide">
+      <input type="hidden" name="form-name" value="contact-insurance">
+      <p class="hp"><label>Leave blank <input name="bot-field"></label></p>
+        <div class="field-row">
+          <label><span>Name <span class="req" aria-hidden="true">*</span></span><input name="name" required autocomplete="name"></label>
+          <label><span>Email <span class="req" aria-hidden="true">*</span></span><input type="email" name="email" required autocomplete="email"></label>
+        </div>
+        <div class="field-row">
+          <label>Phone (optional)<input type="tel" name="phone" autocomplete="tel"></label>
+          <label>Best way to reach you
+            <select name="contact_method"><option>Email</option><option>Phone call</option><option>Text message</option></select>
+          </label>
+        </div>
+        <label><span>What can we help with? <span class="req" aria-hidden="true">*</span></span>
+          <select name="topic" id="ctTopic" required>
+            <option value="Free insurance consultation">Free insurance consultation</option>
+            <option value="Question about my coverage">Question about my coverage</option>
+            <option value="Employee benefits for my business">Employee benefits for my business</option>
+            <option value="Small business consulting">Small business consulting</option>
+            <option value="Events">Events</option>
+            <option value="Something else">Something else</option>
+          </select>
+        </label>
+        <label><span>Message <span class="req" aria-hidden="true">*</span></span><textarea name="message" rows="5" required maxlength="2000"></textarea></label>
+        <p class="note" id="ctNote">Please don't include health or medical details in this form.</p>
+        <label class="check"><input type="checkbox" name="contact_consent" required> I agree that LuvUrCity may contact me by phone, text, or email about my request. Consent is not a condition of purchase. Message and data rates may apply. Reply STOP to opt out.</label>
+      <button class="btn btn-magenta" type="submit">Send message</button>
+    </form>
+    <aside class="contact-card">
+      <h2>Reach Chasity</h2>
+      <dl>
+        <div><dt>Call or text</dt><dd><a id="ctPhone" href="tel:+18727777991">872-777-7991</a></dd></div>
+        <div><dt>Insurance email</dt><dd><a id="ctEmailIns" href="mailto:chasity.chapel@ia.combined.com">chasity.chapel@ia.combined.com</a></dd></div>
+        <div><dt>Consulting & city services</dt><dd><a id="ctEmailCity" href="mailto:luvurcity1125@gmail.com">luvurcity1125@gmail.com</a></dd></div>
+        <div><dt>Hours</dt><dd id="ctHours">By appointment</dd></div>
+        <div><dt>Service area</dt><dd id="ctArea">Chicagoland</dd></div>
+        <div><dt>Response time</dt><dd id="ctResponse"></dd></div>
+      </dl>
+      <a class="btn btn-gold" href="/#booking">Book a free consultation</a>
+    </aside>
+  </div>
+  <!-- Netlify form detection for the consulting inbox (not shown) -->
+  <form name="contact-consulting" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input name="name"><input name="email"><input name="phone"><select name="contact_method"></select><select name="topic"></select><textarea name="message"></textarea><input type="checkbox" name="contact_consent"><input name="bot-field">
+  </form>
+</section>
+<section class="cta-band">
+  <div class="wrap cta-band-grid">
+    <div><h2>Ready to talk it through?</h2><p>Free, about 30 minutes, and no obligation.</p></div>
+    <div class="cta-row"><a class="btn btn-gold" href="/#booking">Book a free consultation</a><a class="btn btn-outline-light" data-tel href="tel:+18727777991">Call or text 872-777-7991</a></div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div>
+      <a class="foot-logo" href="/"><img src="/images/brand/logo-script-web.png" alt="LuvUrCity home" width="713" height="600" loading="lazy"></a>
+      <p class="foot-line" id="footBrandLine">Luv Ur City My Way · Protecting People. Building Futures.</p>
+      <p class="foot-agent" id="footAgent"></p>
+      <div class="social" id="social"></div>
+    </div>
+    <div>
+      <h3>Explore</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li><li><a href="/services.html">Services</a></li><li><a href="/events.html">Events</a></li><li><a href="/shop.html">Shop</a></li><li><a href="/gallery.html">Gallery</a></li><li><a href="/blog.html">Blog</a></li><li><a href="/faq.html">FAQ</a></li><li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <ul class="foot-contact" id="footContact"></ul>
+    </div>
+  </div>
+  <div class="wrap disclaimers" id="disclaimers"></div>
+  <div class="wrap foot-bottom">
+    <p>© <span id="year"></span> LuvUrCity. All rights reserved. · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a> · <a href="/accessibility.html">Accessibility</a></p>
+    <p class="credit">Site by <a href="https://applied-intelholdings.net" rel="noopener">Applied Intelligence Holdings</a></p>
+  </div>
+</footer>
+
+<!-- Flyer lightbox -->
+<dialog class="lightbox" id="lightbox" aria-label="Flyer preview">
+  <button class="lb-close" id="lbClose" aria-label="Close">×</button>
+  <img id="lbImg" alt="">
+  <p id="lbCaption"></p>
+</dialog>
+
+<!-- City bot -->
+<div class="bot" id="bot">
+  <button class="bot-launch" id="botLaunch" aria-expanded="false" aria-controls="botPanel">
+    <span class="bot-face" id="botFace" aria-hidden="true">C</span>
+    <span class="bot-label">Ask <span class="bot-name">City</span></span>
+  </button>
+  <section class="bot-panel" id="botPanel" role="dialog" aria-modal="false" aria-labelledby="botTitle" hidden>
+    <header class="bot-head">
+      <span class="bot-face sm" aria-hidden="true">C</span>
+      <div><h2 id="botTitle">City</h2><p>LuvUrCity virtual helper</p></div>
+      <button class="bot-close" id="botClose" aria-label="Close chat">×</button>
+    </header>
+    <div class="bot-log" id="botLog" aria-live="polite"></div>
+    <div class="bot-chips" id="botChips"></div>
+    <form class="bot-input" id="botForm">
+      <label class="sr" for="botText">Type a question</label>
+      <input id="botText" placeholder="Type a question…" autocomplete="off" maxlength="200">
+      <button type="submit" aria-label="Send">→</button>
+    </form>
+  </section>
+</div>
+
+<script src="/js/app.js" defer></script>
+</body>
+</html>

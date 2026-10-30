@@ -7,7 +7,10 @@
       "category": "Income Protection",
       "image": "",
       "excerpt": "Independent contractors don't get employer sick pay. Here's how disability and accident plans can fill the gap.",
-      "link": "/blog.html"
+      "link": "/post.html?p=1099-worker-income-protection",
+      "slug": "1099-worker-income-protection",
+      "body": "If you work for yourself, there's no HR department and no employer sick-pay policy. When an illness or injury keeps you off the job, your income usually stops the same day.\n\n## What usually happens without coverage\n\nMost independent contractors fall back on savings, credit cards, or family. Even a few weeks without work can set a small business back for months.\n\n## Plans that pay you directly\n\n- **Short-term disability** replaces part of your income for a limited period after a covered illness or injury.\n- **Accident plans** pay cash benefits after covered accidents, such as fractures, ER visits, or hospital stays.\n- **Sickness plans** pay cash benefits after covered illnesses or hospitalization.\n\nBenefits are generally paid to you, not to a doctor or hospital, so you decide how to use the money: rent, groceries, business bills, or medical costs.\n\n## What to compare\n\n1. How long you must wait before benefits start.\n2. How long benefits can last.\n3. What counts as a covered condition.\n4. The monthly premium and whether it can change.\n\nEvery plan has its own terms and limits, so read the details or ask before you enroll.\n\n## Next step\n\nBook a free consultation and we'll look at what fits your work, budget, and household.",
+      "author": "Chasity D. Chapel"
     },
     {
       "title": "Open Enrollment Checklist: 7 Things to Review Before You Renew",
@@ -15,7 +18,10 @@
       "category": "Health Insurance",
       "image": "",
       "excerpt": "Doctors, prescriptions, deductibles, and more — a quick list to make sure your plan still fits next year.",
-      "link": "/blog.html"
+      "link": "/post.html?p=open-enrollment-checklist",
+      "slug": "open-enrollment-checklist",
+      "body": "Plans, prices, and networks can change every year. A quick review before you renew helps you avoid surprises.\n\n## 7 things to check\n\n1. **Your doctors.** Are they still in the plan's network?\n2. **Your prescriptions.** Are they still covered, and at what cost?\n3. **Premium.** What will you pay each month next year?\n4. **Deductible and out-of-pocket maximum.** How much could you pay before the plan pays more?\n5. **Life changes.** Marriage, a new baby, a move, or a new job can change what you need.\n6. **Household income.** If you buy Marketplace coverage, savings can depend on your expected income.\n7. **Extras.** Do you need dental, vision, or supplemental coverage alongside your health plan?\n\n## Missed the window?\n\nOutside open enrollment, you usually need a qualifying life event to change health coverage. Many other plans, like life, dental, and supplemental coverage, can be applied for at other times of year.\n\n## Next step\n\nBring your current plan details to a free consultation and we'll walk through the checklist together.",
+      "author": "Chasity D. Chapel"
     },
     {
       "title": "What Is Hospital Indemnity Insurance and Who Needs It?",
@@ -23,7 +29,13 @@
       "category": "Supplemental Coverage",
       "image": "",
       "excerpt": "A plain-English look at plans that pay cash when you're admitted to the hospital.",
-      "link": "/blog.html"
+      "link": "/post.html?p=hospital-indemnity-explained",
+      "slug": "hospital-indemnity-explained",
+      "body": "Hospital indemnity insurance is a supplemental plan that pays cash benefits when you're admitted to the hospital for a covered reason.\n\n## How it works\n\nInstead of paying the hospital, the plan pays **you** a set amount, often per admission or per day, based on the plan you choose. You can use the money however you want.\n\n## Why people add it\n\n- High deductibles mean a hospital stay can still cost a lot, even with health insurance.\n- Time away from work can mean lost income.\n- Travel, childcare, and household bills don't stop while you recover.\n\n## What it isn't\n\nHospital indemnity is **not** a replacement for health insurance. It's designed to sit alongside your main coverage.\n\n## What to compare\n\n1. Benefit amount per admission and per day.\n2. Waiting periods and pre-existing condition rules.\n3. Which stays and services are covered.\n4. Monthly premium.\n\n## Next step\n\nAsk during a free consultation whether a supplemental plan makes sense for your situation.",
+      "author": "Chasity D. Chapel"
     }
-  ]
+  ],
+  "kicker": "Blog",
+  "headline": "Plain-English insurance and small-business tips",
+  "intro": "Short, practical articles to help you make confident decisions."
 }

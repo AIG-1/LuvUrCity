@@ -1,0 +1,49 @@
+{
+  "kicker": "Gallery",
+  "headline": "Out in the community",
+  "intro": "Workshops, community events, client moments, and the flyers behind them.",
+  "items": [
+    {
+      "type": "image",
+      "src": "/images/uploads/chasity-headshot.jpg",
+      "caption": "Chasity D. Chapel, licensed insurance agent",
+      "alt": "Portrait of Chasity D. Chapel smiling, with the Chicago skyline behind her",
+      "video": ""
+    },
+    {
+      "type": "image",
+      "src": "/images/flyers/luvurcity-services.jpg",
+      "caption": "LuvUrCity services overview",
+      "alt": "LuvUrCity flyer listing insurance, benefits, and small-business consulting services",
+      "video": ""
+    },
+    {
+      "type": "image",
+      "src": "/images/flyers/1099-cash-benefits.jpg",
+      "caption": "Cash benefits for 1099 workers",
+      "alt": "Flyer about disability, sickness, and accident plans that pay cash to independent contractors",
+      "video": ""
+    },
+    {
+      "type": "image",
+      "src": "/images/flyers/health-family-mission.jpg",
+      "caption": "Your Health. Your Family. Our Mission.",
+      "alt": "Flyer listing health, senior, life, dental, vision, and supplemental insurance services",
+      "video": ""
+    },
+    {
+      "type": "image",
+      "src": "/images/flyers/final-expense-life.jpg",
+      "caption": "Final expense and life insurance",
+      "alt": "Flyer offering free consultations on final expense, whole life, and term policies",
+      "video": ""
+    },
+    {
+      "type": "image",
+      "src": "/images/flyers/affordable-health.jpg",
+      "caption": "Affordable health insurance",
+      "alt": "Flyer about affordable health insurance for individuals and families",
+      "video": ""
+    }
+  ]
+}

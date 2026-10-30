@@ -6,7 +6,7 @@ media_folder: "images/uploads"
 public_folder: "/images/uploads"
 site_url: https://luvurcity.netlify.app
 display_url: https://luvurcity.netlify.app
-logo_url: /images/favicon.svg
+logo_url: /images/brand/icon-180.png
 
 collections:
   - name: "homepage"
@@ -22,7 +22,7 @@ collections:
           - {label: "Agent name", name: "agentName", widget: "string"}
           - {label: "Agent title", name: "agentTitle", widget: "string"}
           - {label: "Tagline", name: "tagline", widget: "string"}
-          - {label: "Logo (leave empty to show text logo)", name: "logo", widget: "image", required: false}
+          - {label: "Header logo (empty = horizontal LuvUrCity logo)", name: "logo", widget: "image", required: false}
           - {label: "Headshot photo", name: "headshot", widget: "image"}
           - {label: "Phone", name: "phone", widget: "string"}
           - {label: "Email — Insurance", name: "emailInsurance", widget: "string"}
@@ -141,7 +141,12 @@ collections:
         label: "Reviews (real, approved reviews only)"
         file: "data/reviews.json"
         fields:
-          - {label: "Section title", name: "title", widget: "string"}
+          - {label: "Homepage section title", name: "title", widget: "string"}
+          - {label: "Reviews page — small label", name: "kicker", widget: "string"}
+          - {label: "Reviews page — headline", name: "headline", widget: "string"}
+          - {label: "Reviews page — intro", name: "intro", widget: "text"}
+          - {label: "Google reviews link", name: "googleUrl", widget: "string", required: false}
+          - {label: "Facebook page link", name: "facebookUrl", widget: "string", required: false}
           - {label: "Text shown when there are no reviews", name: "emptyText", widget: "text"}
           - label: "Reviews"
             name: "reviews"
@@ -159,22 +164,28 @@ collections:
 
       # ---------- BLOG TEASERS ----------
       - name: "posts"
-        label: "Blog Teasers"
+        label: "Blog Posts (first 3 show on homepage)"
         file: "data/posts.json"
         fields:
-          - {label: "Section title", name: "title", widget: "string"}
-          - label: "Posts (first 3 show on homepage)"
+          - {label: "Homepage section title", name: "title", widget: "string"}
+          - {label: "Blog page — small label", name: "kicker", widget: "string"}
+          - {label: "Blog page — headline", name: "headline", widget: "string"}
+          - {label: "Blog page — intro", name: "intro", widget: "text"}
+          - label: "Posts"
             name: "posts"
             widget: "list"
             label_singular: "Post"
-            summary: "{{fields.title}}"
+            summary: "{{fields.date}} — {{fields.title}}"
             fields:
               - {label: "Title", name: "title", widget: "string"}
+              - {label: "URL slug (lowercase-with-dashes, unique)", name: "slug", widget: "string", pattern: ["^[a-z0-9-]+$", "Lowercase letters, numbers, and dashes only"]}
               - {label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false}
+              - {label: "Author", name: "author", widget: "string", default: "Chasity D. Chapel"}
               - {label: "Category", name: "category", widget: "string"}
               - {label: "Image", name: "image", widget: "image", required: false}
-              - {label: "Excerpt", name: "excerpt", widget: "text"}
-              - {label: "Link", name: "link", widget: "string"}
+              - {label: "Excerpt (card text)", name: "excerpt", widget: "text"}
+              - {label: "Article", name: "body", widget: "markdown", buttons: ["bold", "italic", "link", "heading-two", "heading-three", "bulleted-list", "numbered-list"], editor_components: [], modes: ["rich_text", "raw"]}
+              - {label: "Link (leave as is)", name: "link", widget: "hidden", required: false}
 
       # ---------- CITY BOT ----------
       - name: "bot"
@@ -280,3 +291,85 @@ collections:
                 fields:
                   - {label: "Question", name: "q", widget: "string"}
                   - {label: "Answer", name: "a", widget: "text"}
+
+      - name: "events"
+        label: "Events page"
+        file: "data/events.json"
+        fields:
+          - {label: "Small label", name: "kicker", widget: "string"}
+          - {label: "Headline", name: "headline", widget: "string"}
+          - {label: "Intro", name: "intro", widget: "text"}
+          - {label: "Text when no upcoming events", name: "emptyText", widget: "text"}
+          - label: "Events (past dates move to 'Past events' automatically)"
+            name: "events"
+            widget: "list"
+            label_singular: "Event"
+            summary: "{{fields.title}} — {{fields.date}}"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Date (leave empty if not set yet)", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: false}
+              - {label: "Text when no date (e.g. Date coming soon)", name: "status", widget: "string", required: false}
+              - {label: "Time", name: "time", widget: "string", required: false}
+              - {label: "Location", name: "location", widget: "string", required: false}
+              - {label: "Format", name: "format", widget: "select", options: ["In person", "Virtual", "Hybrid"]}
+              - {label: "Type label", name: "type", widget: "string", required: false}
+              - {label: "Image", name: "image", widget: "image", required: false}
+              - {label: "Summary", name: "summary", widget: "text"}
+              - {label: "Button link (RSVP, Eventbrite, Zoom, /contact.html?topic=Events)", name: "link", widget: "string", required: false}
+              - {label: "Button text", name: "linkText", widget: "string", required: false}
+
+      - name: "gallery"
+        label: "Gallery page (photos & videos)"
+        file: "data/gallery.json"
+        fields:
+          - {label: "Small label", name: "kicker", widget: "string"}
+          - {label: "Headline", name: "headline", widget: "string"}
+          - {label: "Intro", name: "intro", widget: "text"}
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            label_singular: "Item"
+            summary: "{{fields.type}} — {{fields.caption}}"
+            fields:
+              - {label: "Type", name: "type", widget: "select", options: ["image", "video"], default: "image"}
+              - {label: "Photo (for images)", name: "src", widget: "image", required: false}
+              - {label: "Video — upload an MP4 (under 20 MB) or paste a YouTube/Vimeo link", name: "video", widget: "file", required: false}
+              - {label: "Caption", name: "caption", widget: "string", required: false}
+              - {label: "Description for screen readers", name: "alt", widget: "string", required: false}
+
+      - name: "contact"
+        label: "Contact page"
+        file: "data/contact.json"
+        fields:
+          - {label: "Small label", name: "kicker", widget: "string"}
+          - {label: "Headline", name: "headline", widget: "string"}
+          - {label: "Intro", name: "intro", widget: "text"}
+          - {label: "Hours", name: "hours", widget: "string"}
+          - {label: "Response time", name: "responseTime", widget: "string"}
+          - {label: "Note under the form", name: "formNote", widget: "text"}
+
+      - name: "legal"
+        label: "Privacy, Terms & Accessibility"
+        file: "data/legal.json"
+        fields:
+          - label: "Privacy Policy"
+            name: "privacy"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Last updated", name: "updated", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false}
+              - {label: "Body", name: "body", widget: "markdown"}
+          - label: "Terms of Use"
+            name: "terms"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Last updated", name: "updated", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false}
+              - {label: "Body", name: "body", widget: "markdown"}
+          - label: "Accessibility Statement"
+            name: "accessibility"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Last updated", name: "updated", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false}
+              - {label: "Body", name: "body", widget: "markdown"}

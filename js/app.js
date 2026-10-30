@@ -76,7 +76,7 @@
   function renderSite(s) {
     if (!s) return;
     if (s.conceptPreview) $("#conceptBar").hidden = false;
-    if (s.logo) $("#brandLogo").innerHTML = `<img src="${esc(s.logo)}" alt="">`;
+    if (s.logo && $("#brandLogoImg")) $("#brandLogoImg").src = s.logo;
     const h = s.hero || {};
     if ($("#heroHeadline")) {
       setText("heroEyebrow", h.eyebrow); setText("heroHeadline", h.headline); setText("heroSub", h.subhead);
@@ -321,6 +321,147 @@
       </section>`).join("");
   }
 
+
+  /* Tiny, safe Markdown: headings, lists, bold, italic, links, paragraphs */
+  function md(src) {
+    const inline = (t) => esc(t)
+      .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+      .replace(/\*(.+?)\*/g, "<em>$1</em>")
+      .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, txt, url) => `<a href="${esc(safeUrl(url.replace(/&amp;/g, "&")))}">${txt}</a>`);
+    const out = []; let list = null;
+    const close = () => { if (list) { out.push(`</${list}>`); list = null; } };
+    String(src || "").split(/\r?\n/).forEach((line) => {
+      const t = line.trim(); let m;
+      if (!t) { close(); return; }
+      if ((m = t.match(/^(#{2,4})\s+(.*)/))) { close(); const n = m[1].length; out.push(`<h${n}>${inline(m[2])}</h${n}>`); return; }
+      if ((m = t.match(/^[-*]\s+(.*)/))) { if (list !== "ul") { close(); out.push("<ul>"); list = "ul"; } out.push(`<li>${inline(m[1])}</li>`); return; }
+      if ((m = t.match(/^\d+\.\s+(.*)/))) { if (list !== "ol") { close(); out.push("<ol>"); list = "ol"; } out.push(`<li>${inline(m[1])}</li>`); return; }
+      close(); out.push(`<p>${inline(t)}</p>`);
+    });
+    close(); return out.join("\n");
+  }
+  const fmtDate = (d) => { if (!d) return ""; const t = new Date(String(d).slice(0, 10) + "T12:00:00"); return isNaN(t) ? "" : t.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }); };
+
+  function renderEvents(ev) {
+    if (!ev || !$("#eventList")) return;
+    renderPageHead(ev);
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const items = (ev.events || []).map((e) => ({ ...e, _d: e.date ? new Date(String(e.date).slice(0, 10) + "T12:00:00") : null }));
+    const upcoming = items.filter((e) => !e._d || e._d >= today).sort((a, b) => (a._d || 9e15) - (b._d || 9e15));
+    const past = items.filter((e) => e._d && e._d < today).sort((a, b) => b._d - a._d);
+    const card = (e, isPast) => {
+      const d = e._d;
+      const chip = d ? `<span class="ev-date"><b>${d.toLocaleDateString("en-US", { month: "short" })}</b><i>${d.getDate()}</i></span>` : `<span class="ev-date tba"><b>Date</b><i>TBA</i></span>`;
+      return `<article class="event${isPast ? " past" : ""}">
+        <div class="ev-media">${e.image ? `<img src="${esc(e.image)}" alt="" loading="lazy">` : `<span class="ev-ph" aria-hidden="true">${esc((e.type || "Event"))}</span>`}${chip}</div>
+        <div class="ev-body">
+          <p class="ev-meta">${esc(e.type || "")}${e.format ? " · " + esc(e.format) : ""}</p>
+          <h3>${esc(e.title)}</h3>
+          <ul class="ev-facts">
+            <li><span>When</span>${d ? esc(fmtDate(e.date)) : esc(e.status || "Date coming soon")}${e.time ? " · " + esc(e.time) : ""}</li>
+            <li><span>Where</span>${esc(e.location || "TBA")}</li>
+          </ul>
+          <p>${esc(e.summary)}</p>
+          ${!isPast && e.link ? `<a class="btn btn-sm btn-magenta" href="${esc(link(e.link))}">${esc(e.linkText || "Learn more")}</a>` : ""}
+        </div></article>`;
+    };
+    $("#eventList").innerHTML = upcoming.length ? upcoming.map((e) => card(e, false)).join("") : `<div class="review-empty">${esc(ev.emptyText)}</div>`;
+    const pw = $("#pastWrap");
+    if (pw) { pw.hidden = !past.length; $("#pastList").innerHTML = past.map((e) => card(e, true)).join(""); }
+  }
+
+  function videoEmbed(url) {
+    const u = String(url || "");
+    let m = u.match(/(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([\w-]{6,})/);
+    if (m) return `<iframe src="https://www.youtube-nocookie.com/embed/${m[1]}" title="Video" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+    m = u.match(/vimeo\.com\/(\d+)/);
+    if (m) return `<iframe src="https://player.vimeo.com/video/${m[1]}" title="Video" loading="lazy" allowfullscreen></iframe>`;
+    if (/\.(mp4|webm|mov)(\?|$)/i.test(u) || u.startsWith("/images/")) return `<video src="${esc(u)}" controls preload="metadata" playsinline></video>`;
+    return `<a class="btn btn-outline" href="${esc(safeUrl(u))}" target="_blank" rel="noopener">Watch video</a>`;
+  }
+
+  function renderGallery(g) {
+    if (!g || !$("#galleryGrid")) return;
+    renderPageHead(g);
+    const items = g.items || [];
+    $("#galleryGrid").innerHTML = items.map((x, i) => x.type === "video"
+      ? `<figure class="g-item video"><div class="g-video">${videoEmbed(x.video || x.src)}</div>${x.caption ? `<figcaption>${esc(x.caption)}</figcaption>` : ""}</figure>`
+      : `<figure class="g-item"><button type="button" class="g-open" data-i="${i}" aria-label="Enlarge: ${esc(x.caption || x.alt)}"><img src="${esc(x.src)}" alt="${esc(x.alt || x.caption)}" loading="lazy"></button>${x.caption ? `<figcaption>${esc(x.caption)}</figcaption>` : ""}</figure>`).join("");
+    const lb = $("#lightbox");
+    $("#galleryGrid").addEventListener("click", (e) => {
+      const b = e.target.closest(".g-open"); if (!b) return;
+      const x = items[b.dataset.i];
+      $("#lbImg").src = x.src; $("#lbImg").alt = x.alt || x.caption || ""; $("#lbCaption").textContent = x.caption || "";
+      if (lb.showModal) lb.showModal();
+    });
+    $("#lbClose").addEventListener("click", () => lb.close());
+    lb.addEventListener("click", (e) => { if (e.target === lb) lb.close(); });
+  }
+
+  function renderBlog(p) {
+    if (!p || !$("#blogList")) return;
+    renderPageHead(p);
+    const posts = [...(p.posts || [])].sort((a, b) => String(b.date).localeCompare(String(a.date)));
+    $("#blogList").innerHTML = posts.map((x) => `
+      <a class="post" href="${esc(x.slug ? "/post.html?p=" + encodeURIComponent(x.slug) : safeUrl(x.link))}">
+        <div class="post-img">${x.image ? `<img src="${esc(x.image)}" alt="" loading="lazy">` : `<span class="ph" aria-hidden="true">LuvUrCity</span>`}</div>
+        <div class="post-body"><span class="post-meta">${esc(x.category)}${x.date ? " · " + esc(fmtDate(x.date)) : ""}</span>
+        <h3>${esc(x.title)}</h3><p>${esc(x.excerpt)}</p></div></a>`).join("");
+  }
+
+  function renderPost(p) {
+    if (!p || !$("#postBody")) return;
+    const slug = new URLSearchParams(location.search).get("p");
+    const post = (p.posts || []).find((x) => x.slug === slug);
+    if (!post) { setText("pageTitle", "Article not found"); $("#postBody").innerHTML = `<p>This article may have moved. <a href="/blog.html">See all articles</a>.</p>`; return; }
+    document.title = post.title + " | LuvUrCity";
+    setText("pageKicker", post.category); setText("pageTitle", post.title);
+    setText("pageIntro", [post.author, fmtDate(post.date)].filter(Boolean).join(" · "));
+    $("#postCrumb").textContent = post.title;
+    $("#postBody").innerHTML = (post.image ? `<img class="post-hero" src="${esc(post.image)}" alt="">` : "") + md(post.body || post.excerpt);
+    const others = (p.posts || []).filter((x) => x !== post).slice(0, 2);
+    $("#postMore").innerHTML = others.map((x) => `<a class="more-link" href="/post.html?p=${encodeURIComponent(x.slug)}"><span>${esc(x.category)}</span>${esc(x.title)}</a>`).join("");
+  }
+
+  function renderReviewsPage(r) {
+    if (!r || !$("#reviewLinks")) return;
+    renderPageHead(r);
+    $("#reviewLinks").innerHTML = [r.googleUrl && `<a class="btn btn-outline" href="${esc(safeUrl(r.googleUrl))}" target="_blank" rel="noopener">Review us on Google</a>`,
+      r.facebookUrl && `<a class="btn btn-outline" href="${esc(safeUrl(r.facebookUrl))}" target="_blank" rel="noopener">See us on Facebook</a>`].filter(Boolean).join("");
+  }
+
+  function renderContact(c, site) {
+    if (!c || !$("#contactForm")) return;
+    renderPageHead(c);
+    setText("ctHours", c.hours); setText("ctResponse", c.responseTime); setText("ctNote", c.formNote);
+    const ph = $("#ctPhone"); ph.textContent = site.phone; ph.href = tel(site.phone);
+    const ei = $("#ctEmailIns"); ei.textContent = site.emailInsurance; ei.href = "mailto:" + site.emailInsurance;
+    const ec = $("#ctEmailCity"); ec.textContent = site.emailCity; ec.href = "mailto:" + site.emailCity;
+    setText("ctArea", site.serviceArea);
+  }
+
+  function renderLegal(l) {
+    const key = document.body.dataset.legal;
+    if (!l || !key || !l[key] || !$("#legalBody")) return;
+    const d = l[key];
+    setText("pageTitle", d.title); setText("pageIntro", d.updated ? "Last updated " + fmtDate(d.updated) : "");
+    $("#legalBody").innerHTML = md(d.body);
+  }
+
+  /* Contact form: route to the insurance or consulting inbox by topic */
+  function initContactForm() {
+    const f = $("#contactForm"); if (!f) return;
+    const topic = $("#ctTopic"), nameInput = f.querySelector('input[name="form-name"]');
+    const set = () => {
+      const biz = /consulting|events|something else/i.test(topic.value);
+      const n = biz ? "contact-consulting" : "contact-insurance";
+      f.setAttribute("name", n); nameInput.value = n;
+    };
+    topic.addEventListener("change", set); set();
+    const q = new URLSearchParams(location.search).get("topic");
+    if (q) { const o = [...topic.options].find((x) => x.value.toLowerCase().includes(q.toLowerCase())); if (o) { topic.value = o.value; set(); } }
+  }
+
   function initNav() {
     const btn = $(".nav-toggle"), nav = $("#siteNav");
     btn.addEventListener("click", () => {
@@ -333,7 +474,9 @@
     $("#year").textContent = new Date().getFullYear();
     initNav(); wireMotion();
     if (reduceMotion) document.querySelectorAll(".motion-btn").forEach((b) => (b.hidden = true));
-    const PAGE_DATA = { home: ["flyers", "services", "reviews", "posts"], about: ["about"], services: ["services"], shop: ["shop"], faq: ["faq"] };
+    const PAGE_DATA = { home: ["flyers", "services", "reviews", "posts"], about: ["about"], services: ["services"], shop: ["shop"], faq: ["faq"],
+      events: ["events"], gallery: ["gallery"], blog: ["posts"], post: ["posts"], reviews: ["reviews"], contact: ["contact"], legal: ["legal"] };
+    initContactForm();
     const extra = PAGE_DATA[PAGE] || [];
     Promise.all(["site", "ticker", "bot", ...extra].map(getJSON)).then(([site, ticker, bot, ...rest]) => {
       const d = Object.fromEntries(extra.map((k, i) => [k, rest[i]]));
@@ -342,6 +485,8 @@
       run(() => renderFlyers(d.flyers)); run(() => renderServices(d.services)); run(() => renderReviews(d.reviews)); run(() => renderPosts(d.posts));
       run(() => renderAbout(d.about, site)); run(() => renderServicesPage(d.services, site || {}));
       run(() => renderShop(d.shop, site || {})); run(() => renderFaq(d.faq));
+      run(() => renderEvents(d.events)); run(() => renderGallery(d.gallery)); run(() => renderBlog(d.posts)); run(() => renderPost(d.posts));
+      run(() => renderReviewsPage(d.reviews)); run(() => renderContact(d.contact, site || {})); run(() => renderLegal(d.legal));
       run(() => renderTicker(ticker)); /* after page content so anchors resolve */
       run(() => initBot(bot));
     });

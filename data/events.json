@@ -1,0 +1,60 @@
+{
+  "kicker": "Events",
+  "headline": "Learn, connect, and get your questions answered",
+  "intro": "Free community workshops, enrollment Q&A nights, and small-business sessions across Chicagoland and online. New dates are posted here first.",
+  "emptyText": "New events are being scheduled. Join the email list to hear first.",
+  "events": [
+    {
+      "title": "Open Enrollment Q&A Night",
+      "status": "Date coming soon",
+      "date": "",
+      "time": "6:00–7:30 PM",
+      "location": "Chicagoland · Location TBA",
+      "format": "In person",
+      "type": "Community",
+      "image": "",
+      "summary": "Bring your questions about health coverage for next year. Learn how plans compare, what changes each year, and how to avoid surprise costs.",
+      "link": "/contact.html?topic=Events",
+      "linkText": "Get notified"
+    },
+    {
+      "title": "Small Business Benefits Workshop",
+      "status": "Date coming soon",
+      "date": "",
+      "time": "12:00–1:00 PM",
+      "location": "Online (Zoom)",
+      "format": "Virtual",
+      "type": "Business",
+      "image": "",
+      "summary": "For owners with 1–50 employees: what benefits cost, what employees value most, and simple ways to offer coverage without overspending.",
+      "link": "/contact.html?topic=Events",
+      "linkText": "Get notified"
+    },
+    {
+      "title": "Protecting Your Paycheck: 1099 Worker Session",
+      "status": "Date coming soon",
+      "date": "",
+      "time": "6:30–7:30 PM",
+      "location": "Online (Zoom)",
+      "format": "Virtual",
+      "type": "Education",
+      "image": "",
+      "summary": "Independent contractors and gig workers: learn how disability, accident, and sickness plans can replace income if you can't work.",
+      "link": "/contact.html?topic=Events",
+      "linkText": "Get notified"
+    },
+    {
+      "title": "Turning 65? Medicare Basics (Educational)",
+      "status": "Date coming soon",
+      "date": "",
+      "time": "10:00–11:00 AM",
+      "location": "Chicagoland · Location TBA",
+      "format": "In person",
+      "type": "Education",
+      "image": "",
+      "summary": "An educational overview of Medicare parts, enrollment windows, and common mistakes. No plans are sold at this event.",
+      "link": "/contact.html?topic=Events",
+      "linkText": "Get notified"
+    }
+  ]
+}
