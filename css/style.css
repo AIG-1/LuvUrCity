@@ -33,6 +33,8 @@ a{color:var(--magenta)}
 
 /* Concept bar */
 .concept-bar{background:var(--gold-soft);color:var(--navy-deep);text-align:center;font-size:.8rem;padding:6px 12px;font-weight:600}
+.concept-bar a{color:var(--navy-deep);text-decoration:underline;text-underline-offset:2px}
+.concept-bar a:hover{color:var(--magenta)}
 
 /* Header */
 .site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
