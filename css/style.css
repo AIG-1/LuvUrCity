@@ -1,4 +1,5 @@
 /* LuvUrCity — brand tokens */
+[hidden]{display:none!important}
 :root{
   --navy:#1B2A4A; --navy-deep:#0F1A33; --navy-ink:#22314f;
   --magenta:#D41C80; --magenta-hi:#E0218A; --gold:#C9A24B; --gold-soft:#E8D4A0;
@@ -429,3 +430,13 @@ input:focus,select:focus,textarea:focus{border-color:var(--magenta);outline:none
 .legal{max-width:780px}
 @media (max-width:900px){.contact-grid{grid-template-columns:1fr}.contact-card{position:static}}
 @media (max-width:700px){.event{grid-template-columns:1fr}.ev-media{min-height:150px}}
+
+/* Booking request form */
+.booking-form{gap:12px}
+.bf-title{font-family:var(--serif);font-weight:400;font-size:1.6rem;color:var(--navy);margin:0}
+.days{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.days legend{font-weight:600;font-size:.9rem;color:var(--navy);margin-bottom:6px;padding:0}
+.days label{display:flex!important;align-items:center;gap:6px!important;border:1.5px solid #C9CEDA;border-radius:999px;padding:6px 12px;font-weight:600!important;cursor:pointer}
+.days label:has(input:checked){border-color:var(--magenta);background:#FDEBF4}
+.days input{width:16px;height:16px;accent-color:var(--magenta)}
+.form-err{margin:0;color:#B3125F;font-weight:700;font-size:.9rem}

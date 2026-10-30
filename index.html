@@ -150,14 +150,58 @@
         <li><span>Insurance</span><a id="bkEmailIns" href="mailto:chasity.chapel@ia.combined.com">chasity.chapel@ia.combined.com</a></li>
         <li><span>Consulting & city services</span><a id="bkEmailCity" href="mailto:luvurcity1125@gmail.com">luvurcity1125@gmail.com</a></li>
       </ul>
-      <a class="btn btn-magenta" id="bkLink" href="https://calendly.com/dedicatedtohelpingothers/30min" target="_blank" rel="noopener">Open scheduling page</a>
+      <a class="btn btn-magenta" id="bkLink" href="#" target="_blank" rel="noopener" hidden>Open scheduling page</a>
     </div>
-    <div class="calendar-card" id="calendarCard">
-      <button class="cal-load" id="calLoad" type="button">
-        <span class="cal-icon" aria-hidden="true"></span>
-        <strong>See available times</strong>
-        <span>Loads the scheduling calendar</span>
-      </button>
+    <div>
+      <!-- Shown when a booking link is set in admin (Site Settings > Booking link) -->
+      <div class="calendar-card" id="calendarCard" hidden>
+        <button class="cal-load" id="calLoad" type="button">
+          <span class="cal-icon" aria-hidden="true"></span>
+          <strong>See available times</strong>
+          <span>Loads the scheduling calendar</span>
+        </button>
+      </div>
+      <!-- Shown when no booking link is set -->
+      <form name="booking-request" id="bookingForm" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html" class="form-card wide booking-form">
+        <input type="hidden" name="form-name" value="booking-request">
+        <p class="hp"><label>Leave blank <input name="bot-field"></label></p>
+        <h3 class="bf-title">Request your consultation</h3>
+        <p class="note">Pick the days and times that work. Chasity will confirm by your preferred method.</p>
+        <div class="field-row">
+          <label><span>Name <span class="req" aria-hidden="true">*</span></span><input name="name" required autocomplete="name"></label>
+          <label><span>Phone <span class="req" aria-hidden="true">*</span></span><input type="tel" name="phone" required autocomplete="tel"></label>
+        </div>
+        <div class="field-row">
+          <label><span>Email <span class="req" aria-hidden="true">*</span></span><input type="email" name="email" required autocomplete="email"></label>
+          <label>Confirm by
+            <select name="confirm_by"><option>Text message</option><option>Phone call</option><option>Email</option></select>
+          </label>
+        </div>
+        <label><span>Topic <span class="req" aria-hidden="true">*</span></span>
+          <select name="topic" required>
+            <option value="">Choose one</option>
+            <option>Health insurance</option><option>Life or final expense</option><option>Dental &amp; vision</option>
+            <option>Disability / cash benefits</option><option>Medicare &amp; senior benefits</option>
+            <option>Employee benefits for my business</option><option>Small business consulting</option><option>Not sure yet</option>
+          </select>
+        </label>
+        <fieldset class="days">
+          <legend>Best days <span class="req" aria-hidden="true">*</span></legend>
+          <label><input type="checkbox" name="days" value="Mon"> Mon</label><label><input type="checkbox" name="days" value="Tue"> Tue</label><label><input type="checkbox" name="days" value="Wed"> Wed</label><label><input type="checkbox" name="days" value="Thu"> Thu</label><label><input type="checkbox" name="days" value="Fri"> Fri</label><label><input type="checkbox" name="days" value="Sat"> Sat</label>
+        </fieldset>
+        <div class="field-row">
+          <label>Best time
+            <select name="time_of_day"><option>Morning (9–12)</option><option>Afternoon (12–4)</option><option>Evening (4–7)</option><option>Any time</option></select>
+          </label>
+          <label>Meeting type
+            <select name="meeting_type"><option>Phone call</option><option>Video call</option><option>In person (Chicagoland)</option></select>
+          </label>
+        </div>
+        <p class="note">Please don't include health or medical details here. We'll discuss those privately on your call.</p>
+        <label class="check"><input type="checkbox" name="contact_consent" required> I agree that LuvUrCity may contact me by phone, text, or email to schedule. Consent is not a condition of purchase. Message and data rates may apply. Reply STOP to opt out.</label>
+        <p class="form-err" id="daysErr" role="alert" hidden>Please choose at least one day.</p>
+        <button class="btn btn-magenta" type="submit">Request my free consultation</button>
+      </form>
     </div>
   </div>
 </section>

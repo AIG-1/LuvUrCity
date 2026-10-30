@@ -99,7 +99,9 @@
       const bp = $("#bkPhone"); bp.textContent = s.phone; bp.href = tel(s.phone);
       const bi = $("#bkEmailIns"); bi.textContent = s.emailInsurance; bi.href = "mailto:" + s.emailInsurance;
       const bc = $("#bkEmailCity"); bc.textContent = s.emailCity; bc.href = "mailto:" + s.emailCity;
-      $("#bkLink").href = safeUrl(s.bookingUrl);
+      const hasCal = /^https:\/\//i.test(String(s.bookingUrl || "").trim()) && b.embed !== false;
+      $("#calendarCard").hidden = !hasCal; $("#bookingForm").hidden = hasCal;
+      $("#bkLink").hidden = !hasCal; if (hasCal) $("#bkLink").href = safeUrl(s.bookingUrl);
       $("#calLoad").addEventListener("click", () => {
         const url = safeUrl(s.bookingUrl);
         $("#calendarCard").innerHTML = `<iframe title="Schedule a consultation with ${esc(s.agentName)}" src="${esc(url)}${url.includes("?") ? "&" : "?"}hide_gdpr_banner=1" loading="lazy"></iframe>`;
@@ -449,6 +451,15 @@
   }
 
   /* Contact form: route to the insurance or consulting inbox by topic */
+  function initBookingForm() {
+    const f = $("#bookingForm"); if (!f) return;
+    f.addEventListener("submit", (e) => {
+      const ok = f.querySelectorAll('input[name="days"]:checked').length > 0;
+      $("#daysErr").hidden = ok;
+      if (!ok) { e.preventDefault(); f.querySelector('input[name="days"]').focus(); }
+    });
+  }
+
   function initContactForm() {
     const f = $("#contactForm"); if (!f) return;
     const topic = $("#ctTopic"), nameInput = f.querySelector('input[name="form-name"]');
@@ -476,7 +487,7 @@
     if (reduceMotion) document.querySelectorAll(".motion-btn").forEach((b) => (b.hidden = true));
     const PAGE_DATA = { home: ["flyers", "services", "reviews", "posts"], about: ["about"], services: ["services"], shop: ["shop"], faq: ["faq"],
       events: ["events"], gallery: ["gallery"], blog: ["posts"], post: ["posts"], reviews: ["reviews"], contact: ["contact"], legal: ["legal"] };
-    initContactForm();
+    initContactForm(); initBookingForm();
     const extra = PAGE_DATA[PAGE] || [];
     Promise.all(["site", "ticker", "bot", ...extra].map(getJSON)).then(([site, ticker, bot, ...rest]) => {
       const d = Object.fromEntries(extra.map((k, i) => [k, rest[i]]));

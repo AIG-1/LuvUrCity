@@ -27,7 +27,7 @@ collections:
           - {label: "Phone", name: "phone", widget: "string"}
           - {label: "Email — Insurance", name: "emailInsurance", widget: "string"}
           - {label: "Email — Consulting / City services", name: "emailCity", widget: "string"}
-          - {label: "Booking link (Calendly)", name: "bookingUrl", widget: "string"}
+          - {label: "Booking link (Calendly or Google booking page). Leave EMPTY to show the request form instead", name: "bookingUrl", widget: "string", required: false}
           - {label: "NPN", name: "npn", widget: "string"}
           - {label: "Licensed states (wording)", name: "licensedStates", widget: "string"}
           - {label: "Service area", name: "serviceArea", widget: "string"}
