@@ -125,7 +125,7 @@
     const d = s.disclaimers || {};
     $("#disclaimers").innerHTML = `
       <p><strong>Licensing:</strong> ${esc(s.agentName)}, licensed insurance agent in ${esc(s.licensedStates)}. NPN ${esc(s.npn)}.</p>
-      ${d.tpmo ? `<p><strong>Medicare disclaimer:</strong> ${esc(d.tpmo)}</p>` : ""}
+      ${d.tpmo ? `<p><strong>Plan disclaimer:</strong> ${esc(d.tpmo)}</p>` : ""}
       ${d.government ? `<p>${esc(d.government)}</p>` : ""}
       ${d.general ? `<p>${esc(d.general)}</p>` : ""}
       ${d.consent ? `<p>${esc(d.consent)}</p>` : ""}`;

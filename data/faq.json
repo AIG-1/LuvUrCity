@@ -50,23 +50,6 @@
       ]
     },
     {
-      "title": "Medicare & seniors",
-      "items": [
-        {
-          "q": "When should I start looking at Medicare?",
-          "a": "Your Initial Enrollment Period is a 7-month window: the 3 months before the month you turn 65, your birthday month, and the 3 months after. Starting a few months early gives you time to compare."
-        },
-        {
-          "q": "Does it cost more to enroll through an agent?",
-          "a": "No. Plan premiums are set by the insurance company and are the same whether you enroll with an agent or on your own."
-        },
-        {
-          "q": "Do you offer every Medicare plan?",
-          "a": "We do not offer every plan available in your area. Currently we represent [#] organizations which offer [#] products in your area. Please contact Medicare.gov, 1-800-MEDICARE, or your local State Health Insurance Program (SHIP) to get information on all of your options."
-        }
-      ]
-    },
-    {
       "title": "Small business",
       "items": [
         {

@@ -83,14 +83,14 @@
     {
       "id": "svc-senior",
       "icon": "sun",
-      "title": "Senior Benefits",
-      "text": "Guidance on Medicare Advantage, supplement, and prescription drug options for people turning 65 and beyond.",
+      "title": "Senior Planning",
+      "text": "Final expense, life, hospital indemnity, dental, vision, and long-term care options for adults 60 and over.",
       "contact": "insurance",
-      "details": "Turning 65 or already on Medicare? I'll walk you through Medicare Advantage, Medicare Supplement, and Part D prescription options and help you understand your enrollment windows.",
+      "details": "Coverage built for later life: final expense and life insurance, hospital indemnity, dental and vision, and long-term care. We'll match options to your budget and what you want to protect.",
       "whoFor": [
-        "People turning 65",
-        "Adults retiring and leaving employer coverage",
-        "Caregivers helping a parent compare plans"
+        "Adults planning for retirement",
+        "Seniors on a fixed income",
+        "Caregivers helping a parent compare options"
       ]
     },
     {

@@ -75,7 +75,7 @@ collections:
             name: "disclaimers"
             widget: "object"
             fields:
-              - {label: "Medicare (TPMO) disclaimer — fill in the [#] numbers", name: "tpmo", widget: "text"}
+              - {label: "Plan availability disclaimer (leave empty unless required)", name: "tpmo", widget: "text"}
               - {label: "Government disclaimer", name: "government", widget: "text"}
               - {label: "General disclaimer", name: "general", widget: "text"}
               - {label: "Contact consent", name: "consent", widget: "text"}

@@ -35,26 +35,11 @@
     {
       "label": "Insurance services",
       "keywords": "insurance, health, life, dental, vision, disability, final expense, coverage, plan",
-      "answer": "Chasity helps with health, dental & vision, life, final expense, disability and cash-benefit plans, critical care, hospital indemnity, senior benefits, long-term care, annuities, and employee benefits.",
+      "answer": "Chasity helps with health, dental & vision, life, final expense, disability and cash-benefit plans, critical care, hospital indemnity, senior planning, long-term care, annuities, and employee benefits.",
       "actions": [
         {
           "label": "See all services",
           "link": "#services"
-        }
-      ]
-    },
-    {
-      "label": "Medicare & seniors",
-      "keywords": "medicare, senior, 65, supplement, advantage, part d, prescription",
-      "answer": "Chasity helps people turning 65 and beyond compare Medicare Advantage, supplement, and prescription drug options. We do not offer every plan available in your area. Currently we represent [#] organizations which offer [#] products in your area. Please contact Medicare.gov, 1-800-MEDICARE, or your local State Health Insurance Program (SHIP) to get information on all of your options.",
-      "actions": [
-        {
-          "label": "Book a call",
-          "link": "#booking"
-        },
-        {
-          "label": "Call 872-777-7991",
-          "link": "tel:+18727777991"
         }
       ]
     },
